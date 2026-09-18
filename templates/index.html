@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CloudSage Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body class="light-theme">
+
+<!-- ================================================== -->
+<!-- ANIMATED BACKGROUND -->
+<!-- ================================================== -->
+
+<div class="background-scene">
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <div class="background-glow glow-three"></div>
+
+    <div class="cloud cloud-one">
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="cloud cloud-two">
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="cloud cloud-three">
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="cloud cloud-four">
+        <span></span>
+        <span></span>
+    </div>
+
+</div>
+
+
+<div class="dashboard">
+
+
+    <!-- ================================================== -->
+    <!-- TOP NAVIGATION / BRAND -->
+    <!-- ================================================== -->
+
+    <header class="top-header">
+
+        <div class="brand-area">
+
+            <div class="brand-logo">
+                <span>C</span>
+            </div>
+
+            <div>
+
+                <div class="brand-title-row">
+
+                    <h1>CloudSage</h1>
+
+                    <span class="brand-badge">
+                        CLOUD INTELLIGENCE
+                    </span>
+
+                </div>
+
+                <p>
+                    Explainable Cloud Resource Optimization
+                    & Cost Management Advisor
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+
+            <div class="live-indicator">
+
+                <span class="live-dot"></span>
+
+                <span>
+                    Live Monitoring
+                </span>
+
+            </div>
+
+
+            <button
+                id="themeToggle"
+                class="theme-toggle"
+                onclick="toggleTheme()">
+
+                <span id="themeIcon">
+                    ☾
+                </span>
+
+                <span id="themeText">
+                    Dark
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================================================== -->
+    <!-- HERO -->
+    <!-- ================================================== -->
+
+    <section class="hero-panel hover-lift">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                SMART CLOUD OPTIMIZATION
+            </p>
+
+            <h2>
+                Monitor. Understand.
+                <span>Optimize.</span>
+            </h2>
+
+            <p class="hero-description">
+
+                CloudSage continuously studies cloud resource
+                utilization, detects inefficiency, estimates
+                real AWS cost impact and provides explainable
+                optimization recommendations.
+
+            </p>
+
+
+            <div class="hero-tags">
+
+                <span>
+                    Real-Time Monitoring
+                </span>
+
+                <span>
+                    AWS Pricing
+                </span>
+
+                <span>
+                    Gemini AI
+                </span>
+
+                <span>
+                    Cost Optimization
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="orbit orbit-one"></div>
+
+            <div class="orbit orbit-two"></div>
+
+            <div class="hero-cloud-icon">
+
+                <span class="hero-c">
+                    C
+                </span>
+
+            </div>
+
+            <div class="floating-tag tag-one">
+                AWS
+            </div>
+
+            <div class="floating-tag tag-two">
+                AI
+            </div>
+
+            <div class="floating-tag tag-three">
+                LIVE
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================== -->
+    <!-- TEAM + CLOUD RESOURCE INFO -->
+    <!-- ================================================== -->
+
+    <section class="top-grid">
+
+
+        <!-- TEAM -->
+
+        <div class="panel team-card hover-lift">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        PROJECT TEAM
+                    </p>
+
+                    <h2>
+                        CloudSage Team
+                    </h2>
+
+                </div>
+
+
+                <div class="team-symbol">
+                    CS
+                </div>
+
+            </div>
+
+
+            <p class="team-subtitle">
+
+                Cloud Architecture Design Project
+
+            </p>
+
+
+            <div class="team-members">
+
+
+                <div class="member">
+
+                    <div class="member-avatar avatar-one">
+                        A
+                    </div>
+
+                    <div class="member-info">
+
+                        <strong>
+                            ANBUSELVAM K
+                        </strong>
+
+                        <span>
+                            24BIT0573
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="member">
+
+                    <div class="member-avatar avatar-two">
+                        S
+                    </div>
+
+                    <div class="member-info">
+
+                        <strong>
+                            SUGUNA G
+                        </strong>
+
+                        <span>
+                            24BIT0574
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="member">
+
+                    <div class="member-avatar avatar-three">
+                        I
+                    </div>
+
+                    <div class="member-info">
+
+                        <strong>
+                            ISWARYA M
+                        </strong>
+
+                        <span>
+                            24BIT0575
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CLOUD RESOURCE INFORMATION -->
+
+        <div class="panel cloud-panel hover-lift">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        CLOUD INFRASTRUCTURE
+                    </p>
+
+                    <h2>
+                        Cloud Resource Information
+                    </h2>
+
+                </div>
+
+
+                <div class="aws-badge">
+
+                    <span class="aws-dot"></span>
+
+                    AWS EC2
+
+                </div>
+
+            </div>
+
+
+            <div class="cloud-info-grid">
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Cloud Provider
+                    </span>
+
+                    <strong id="cloud_provider">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Service
+                    </span>
+
+                    <strong id="service">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Current Instance
+                    </span>
+
+                    <strong id="instance_type">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item suggested-info">
+
+                    <span class="info-label">
+                        Suggested Instance
+                    </span>
+
+                    <strong id="suggested_instance">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Region
+                    </span>
+
+                    <strong id="region">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Public IP
+                    </span>
+
+                    <strong id="public_ip">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        vCPU
+                    </span>
+
+                    <strong id="vcpu">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Monitoring
+                    </span>
+
+                    <strong class="active-text">
+                        Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================== -->
+    <!-- LIVE METRICS -->
+    <!-- ================================================== -->
+
+    <section class="metric-section">
+
+        <div class="section-title-row">
+
+            <div>
+
+                <p class="section-label">
+                    REAL-TIME TELEMETRY
+                </p>
+
+                <h2>
+                    Live Resource Metrics
+                </h2>
+
+            </div>
+
+            <span class="refresh-note">
+                Updates every 2 seconds
+            </span>
+
+        </div>
+
+
+        <div class="metrics-grid">
+
+
+            <div class="metric-card cpu-card hover-lift">
+
+                <div class="metric-top">
+
+                    <div class="metric-icon">
+                        CPU
+                    </div>
+
+                    <span class="metric-state">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <p class="metric-name">
+                    CPU Usage
+                </p>
+
+                <h3 id="cpu">
+                    Loading...
+                </h3>
+
+                <div class="metric-decoration"></div>
+
+            </div>
+
+
+            <div class="metric-card memory-card hover-lift">
+
+                <div class="metric-top">
+
+                    <div class="metric-icon">
+                        RAM
+                    </div>
+
+                    <span class="metric-state">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <p class="metric-name">
+                    Memory Usage
+                </p>
+
+                <h3 id="memory">
+                    Loading...
+                </h3>
+
+                <div class="metric-decoration"></div>
+
+            </div>
+
+
+            <div class="metric-card disk-card hover-lift">
+
+                <div class="metric-top">
+
+                    <div class="metric-icon">
+                        SSD
+                    </div>
+
+                    <span class="metric-state">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <p class="metric-name">
+                    Disk Usage
+                </p>
+
+                <h3 id="disk">
+                    Loading...
+                </h3>
+
+                <div class="metric-decoration"></div>
+
+            </div>
+
+
+            <div class="metric-card upload-card hover-lift">
+
+                <div class="metric-top">
+
+                    <div class="metric-icon network-icon">
+                        ↑
+                    </div>
+
+                    <span class="metric-state">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <p class="metric-name">
+                    Upload Speed
+                </p>
+
+                <h3 id="upload">
+                    Loading...
+                </h3>
+
+                <div class="metric-decoration"></div>
+
+            </div>
+
+
+            <div class="metric-card download-card hover-lift">
+
+                <div class="metric-top">
+
+                    <div class="metric-icon network-icon">
+                        ↓
+                    </div>
+
+                    <span class="metric-state">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <p class="metric-name">
+                    Download Speed
+                </p>
+
+                <h3 id="download">
+                    Loading...
+                </h3>
+
+                <div class="metric-decoration"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================== -->
+    <!-- LIVE CHARTS -->
+    <!-- ================================================== -->
+
+    <section class="chart-grid">
+
+
+        <div class="panel chart-panel hover-lift">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        PERFORMANCE GRAPH
+                    </p>
+
+                    <h2>
+                        CPU Utilization
+                    </h2>
+
+                </div>
+
+
+                <div class="chart-badge cpu-chart-badge">
+                    CPU
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="cpuChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="panel chart-panel hover-lift">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        PERFORMANCE GRAPH
+                    </p>
+
+                    <h2>
+                        Memory Utilization
+                    </h2>
+
+                </div>
+
+
+                <div class="chart-badge memory-chart-badge">
+                    RAM
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="memoryChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================== -->
+    <!-- RESOURCE ANALYSIS -->
+    <!-- ================================================== -->
+
+    <section class="analysis-grid">
+
+
+        <!-- STATUS -->
+
+        <div class="panel analysis-card status-card hover-lift">
+
+            <div class="analysis-icon status-analysis-icon">
+
+                <span>
+                    ✓
+                </span>
+
+            </div>
+
+            <p class="section-label">
+                RESOURCE HEALTH
+            </p>
+
+            <h2>
+                Current Status
+            </h2>
+
+
+            <div class="status-display">
+
+                <span class="status-dot"></span>
+
+                <span id="status">
+                    Checking...
+                </span>
+
+            </div>
+
+
+            <div class="average-mini">
+
+
+                <div>
+
+                    <span>
+                        Average CPU
+                    </span>
+
+                    <strong id="avg_cpu">
+                        Loading...
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Average Memory
+                    </span>
+
+                    <strong id="avg_memory">
+                        Loading...
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RECOMMENDATION -->
+
+        <div class="panel analysis-card recommendation-card hover-lift">
+
+            <div class="analysis-icon recommendation-icon">
+
+                <span>
+                    ↗
+                </span>
+
+            </div>
+
+            <p class="section-label">
+                OPTIMIZATION ENGINE
+            </p>
+
+            <h2>
+                CloudSage Recommendation
+            </h2>
+
+
+            <div class="recommendation-message">
+
+                <div class="recommendation-accent"></div>
+
+                <p id="recommendation"
+                   class="recommendation-text">
+
+                    Analyzing resource utilization...
+
+                </p>
+
+            </div>
+
+
+            <div class="recommendation-footer">
+
+                <span>
+                    Based on recent CPU & memory utilization
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- COST -->
+
+        <div class="panel analysis-card cost-card hover-lift">
+
+            <div class="analysis-icon cost-icon">
+
+                <span>
+                    $
+                </span>
+
+            </div>
+
+            <p class="section-label">
+                AWS PRICING ANALYSIS
+            </p>
+
+            <h2>
+                Cost Analysis
+            </h2>
+
+
+            <p class="cost-note">
+                Estimated On-Demand EC2 compute cost
+            </p>
+
+
+            <div class="cost-list">
+
+
+                <div>
+
+                    <span>
+                        Hourly Cost
+                    </span>
+
+                    <strong>
+                        $<span id="hourly_cost">0</span>
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Current Monthly
+                    </span>
+
+                    <strong>
+                        $<span id="current_cost">0</span>
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Optimized Monthly
+                    </span>
+
+                    <strong>
+                        $<span id="optimized_cost">0</span>
+                    </strong>
+
+                </div>
+
+
+                <div class="saving-row">
+
+                    <span>
+                        Estimated Saving
+                    </span>
+
+                    <strong>
+                        $<span id="saving">0</span>
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Saving Percentage
+                    </span>
+
+                    <strong>
+                        <span id="saving_percent">0</span>%
+                    </strong>
+
+                </div>
+
+
+                <div id="additional_cost_row"
+                     class="additional-row">
+
+                    <span>
+                        Additional Monthly
+                    </span>
+
+                    <strong>
+                        $<span id="additional_cost">0</span>
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================== -->
+    <!-- GEMINI AI ADVISOR -->
+    <!-- ================================================== -->
+
+    <section class="panel ai-panel hover-lift">
+
+
+        <div class="ai-left">
+
+
+            <div class="ai-logo-wrapper">
+    <span class="ai-logo-text">AI</span>
+</div>
+
+
+            <div>
+
+                <p class="section-label ai-label">
+                    GOOGLE GEMINI ADVISOR
+                </p>
+
+                <h2>
+                    Explain this recommendation
+                </h2>
+
+                <p class="ai-subtitle">
+                    Understand why CloudSage made this optimization decision.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-content">
+
+            <div class="ai-response">
+
+                <p id="ai_explanation">
+
+                    Click the button to let Gemini explain the
+                    recommendation and its cost/performance impact.
+
+                </p>
+
+            </div>
+
+
+            <button
+                class="ai-button"
+                onclick="generateExplanation()">
+
+                <span class="button-sparkle">
+                    ✦
+                </span>
+
+                Explain with Gemini
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================== -->
+    <!-- OPTIMIZATION HISTORY -->
+    <!-- ================================================== -->
+
+    <section class="panel history-panel hover-lift">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="section-label">
+                    OPTIMIZATION RECORDS
+                </p>
+
+                <h2>
+                    Optimization History
+                </h2>
+
+                <p class="history-description">
+                    Recent utilization analysis and CloudSage recommendations.
+                </p>
+
+            </div>
+
+
+            <span class="history-badge">
+                Last 10 Records
+            </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>
+                        Time
+                    </th>
+
+                    <th>
+                        CPU
+                    </th>
+
+                    <th>
+                        Memory
+                    </th>
+
+                    <th>
+                        Disk
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Recommendation
+                    </th>
+
+                    <th>
+                        Saving
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody id="historyTable">
+
+                <tr>
+
+                    <td colspan="7">
+
+                        Loading optimization history...
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================== -->
+    <!-- FOOTER -->
+    <!-- ================================================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <span class="footer-logo">
+                C
+            </span>
+
+            <div>
+
+                <strong>
+                    CloudSage
+                </strong>
+
+                <span>
+                    Explainable Cloud Optimization Advisor
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <p>
+            AWS • Flask • Gemini • SQLite • Chart.js
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+
+<script>
+
+
+// ==================================================
+// CHART DATA
+// ==================================================
+
+const cpuLabels = [];
+const cpuData = [];
+
+const memoryLabels = [];
+const memoryData = [];
+
+
+
+// ==================================================
+// THEME
+// ==================================================
+
+function getThemeColors() {
+
+    const dark =
+        document.body.classList.contains("dark-theme");
+
+
+    if (dark) {
+
+        return {
+
+            text: "#cbd5e1",
+
+            grid: "rgba(148, 163, 184, 0.12)",
+
+            cpuLine: "#fb7185",
+
+            cpuFill: "rgba(251, 113, 133, 0.14)",
+
+            memoryLine: "#a78bfa",
+
+            memoryFill: "rgba(167, 139, 250, 0.14)"
+
+        };
+
+    }
+
+
+    return {
+
+        text: "#64748b",
+
+        grid: "rgba(100, 116, 139, 0.12)",
+
+        cpuLine: "#f97316",
+
+        cpuFill: "rgba(249, 115, 22, 0.12)",
+
+        memoryLine: "#8b5cf6",
+
+        memoryFill: "rgba(139, 92, 246, 0.12)"
+
+    };
+
+}
+
+
+
+// ==================================================
+// CPU CHART
+// ==================================================
+
+const initialColors =
+    getThemeColors();
+
+
+const cpuChart = new Chart(
+
+    document.getElementById("cpuChart"),
+
+    {
+
+        type: "line",
+
+        data: {
+
+            labels: cpuLabels,
+
+            datasets: [
+
+                {
+
+                    label: "CPU Usage %",
+
+                    data: cpuData,
+
+                    borderColor:
+                        initialColors.cpuLine,
+
+                    backgroundColor:
+                        initialColors.cpuFill,
+
+                    fill: true,
+
+                    tension: 0.4,
+
+                    borderWidth: 3,
+
+                    pointRadius: 3,
+
+                    pointHoverRadius: 6
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            interaction: {
+
+                intersect: false,
+
+                mode: "index"
+
+            },
+
+            plugins: {
+
+                legend: {
+
+                    display: false
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    min: 0,
+
+                    max: 100,
+
+                    ticks: {
+
+                        color:
+                            initialColors.text
+
+                    },
+
+                    grid: {
+
+                        color:
+                            initialColors.grid
+
+                    }
+
+                },
+
+                x: {
+
+                    ticks: {
+
+                        color:
+                            initialColors.text,
+
+                        maxRotation: 0,
+
+                        autoSkip: true
+
+                    },
+
+                    grid: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+
+
+// ==================================================
+// MEMORY CHART
+// ==================================================
+
+const memoryChart = new Chart(
+
+    document.getElementById("memoryChart"),
+
+    {
+
+        type: "line",
+
+        data: {
+
+            labels: memoryLabels,
+
+            datasets: [
+
+                {
+
+                    label: "Memory Usage %",
+
+                    data: memoryData,
+
+                    borderColor:
+                        initialColors.memoryLine,
+
+                    backgroundColor:
+                        initialColors.memoryFill,
+
+                    fill: true,
+
+                    tension: 0.4,
+
+                    borderWidth: 3,
+
+                    pointRadius: 3,
+
+                    pointHoverRadius: 6
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            interaction: {
+
+                intersect: false,
+
+                mode: "index"
+
+            },
+
+            plugins: {
+
+                legend: {
+
+                    display: false
+
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    min: 0,
+
+                    max: 100,
+
+                    ticks: {
+
+                        color:
+                            initialColors.text
+
+                    },
+
+                    grid: {
+
+                        color:
+                            initialColors.grid
+
+                    }
+
+                },
+
+                x: {
+
+                    ticks: {
+
+                        color:
+                            initialColors.text,
+
+                        maxRotation: 0,
+
+                        autoSkip: true
+
+                    },
+
+                    grid: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+
+
+// ==================================================
+// UPDATE CHART THEME
+// ==================================================
+
+function updateChartTheme() {
+
+    const colors =
+        getThemeColors();
+
+
+    cpuChart.data.datasets[0].borderColor =
+        colors.cpuLine;
+
+    cpuChart.data.datasets[0].backgroundColor =
+        colors.cpuFill;
+
+
+    memoryChart.data.datasets[0].borderColor =
+        colors.memoryLine;
+
+    memoryChart.data.datasets[0].backgroundColor =
+        colors.memoryFill;
+
+
+    cpuChart.options.scales.x.ticks.color =
+        colors.text;
+
+    cpuChart.options.scales.y.ticks.color =
+        colors.text;
+
+    cpuChart.options.scales.y.grid.color =
+        colors.grid;
+
+
+    memoryChart.options.scales.x.ticks.color =
+        colors.text;
+
+    memoryChart.options.scales.y.ticks.color =
+        colors.text;
+
+    memoryChart.options.scales.y.grid.color =
+        colors.grid;
+
+
+    cpuChart.update();
+
+    memoryChart.update();
+
+}
+
+
+
+// ==================================================
+// THEME TOGGLE
+// ==================================================
+
+function toggleTheme() {
+
+    const body =
+        document.body;
+
+
+    body.classList.toggle(
+        "dark-theme"
+    );
+
+
+    body.classList.toggle(
+        "light-theme"
+    );
+
+
+    const dark =
+        body.classList.contains(
+            "dark-theme"
+        );
+
+
+    document.getElementById(
+        "themeIcon"
+    ).innerText =
+        dark ? "☀" : "☾";
+
+
+    document.getElementById(
+        "themeText"
+    ).innerText =
+        dark ? "Light" : "Dark";
+
+
+    localStorage.setItem(
+        "cloudsage-theme",
+        dark ? "dark" : "light"
+    );
+
+
+    updateChartTheme();
+
+}
+
+
+
+// ==================================================
+// LOAD SAVED THEME
+// ==================================================
+
+function loadSavedTheme() {
+
+    const savedTheme =
+        localStorage.getItem(
+            "cloudsage-theme"
+        );
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.remove(
+            "light-theme"
+        );
+
+        document.body.classList.add(
+            "dark-theme"
+        );
+
+
+        document.getElementById(
+            "themeIcon"
+        ).innerText = "☀";
+
+
+        document.getElementById(
+            "themeText"
+        ).innerText = "Light";
+
+    }
+
+    else {
+
+        document.body.classList.add(
+            "light-theme"
+        );
+
+    }
+
+
+    updateChartTheme();
+
+}
+
+
+
+// ==================================================
+// LIVE METRICS
+// ==================================================
+
+async function updateMetrics() {
+
+    try {
+
+        const response =
+            await fetch("/api/metrics");
+
+
+        const data =
+            await response.json();
+
+
+
+        // ------------------------------------------
+        // CLOUD INFORMATION
+        // ------------------------------------------
+
+        document.getElementById(
+            "cloud_provider"
+        ).innerText =
+            data.cloud_provider;
+
+
+        document.getElementById(
+            "service"
+        ).innerText =
+            data.service;
+
+
+        document.getElementById(
+            "instance_type"
+        ).innerText =
+            data.instance_type;
+
+
+        document.getElementById(
+            "suggested_instance"
+        ).innerText =
+            data.suggested_instance;
+
+
+        document.getElementById(
+            "region"
+        ).innerText =
+            data.region;
+
+
+        document.getElementById(
+            "public_ip"
+        ).innerText =
+            data.public_ip;
+
+
+        document.getElementById(
+            "vcpu"
+        ).innerText =
+            data.vcpu;
+
+
+
+        // ------------------------------------------
+        // LIVE METRICS
+        // ------------------------------------------
+
+        document.getElementById(
+            "cpu"
+        ).innerText =
+            data.cpu + "%";
+
+
+        document.getElementById(
+            "memory"
+        ).innerText =
+            data.memory + "%";
+
+
+        document.getElementById(
+            "disk"
+        ).innerText =
+            data.disk + "%";
+
+
+        document.getElementById(
+            "upload"
+        ).innerText =
+            data.upload + " KB/s";
+
+
+        document.getElementById(
+            "download"
+        ).innerText =
+            data.download + " KB/s";
+
+
+
+        // ------------------------------------------
+        // STATUS
+        // ------------------------------------------
+
+        const statusElement =
+            document.getElementById(
+                "status"
+            );
+
+
+        const statusCard =
+            document.querySelector(
+                ".status-card"
+            );
+
+
+        statusElement.innerText =
+            data.status;
+
+
+        if (
+            data.status ===
+            "UNDERUTILIZED"
+        ) {
+
+            statusElement.style.color =
+                "#f59e0b";
+
+
+            statusCard.dataset.status =
+                "under";
+
+        }
+
+
+        else if (
+            data.status ===
+            "OVERUTILIZED"
+        ) {
+
+            statusElement.style.color =
+                "#ef4444";
+
+
+            statusCard.dataset.status =
+                "over";
+
+        }
+
+
+        else {
+
+            statusElement.style.color =
+                "#22c55e";
+
+
+            statusCard.dataset.status =
+                "optimal";
+
+        }
+
+
+
+        // ------------------------------------------
+        // RECOMMENDATION
+        // ------------------------------------------
+
+        document.getElementById(
+            "recommendation"
+        ).innerText =
+            data.recommendation;
+
+
+
+        // ------------------------------------------
+        // RECENT AVERAGES
+        // ------------------------------------------
+
+        document.getElementById(
+            "avg_cpu"
+        ).innerText =
+            data.avg_cpu + "%";
+
+
+        document.getElementById(
+            "avg_memory"
+        ).innerText =
+            data.avg_memory + "%";
+
+
+
+        // ------------------------------------------
+        // COST ANALYSIS
+        // ------------------------------------------
+
+        document.getElementById(
+            "hourly_cost"
+        ).innerText =
+            data.hourly_cost;
+
+
+        document.getElementById(
+            "current_cost"
+        ).innerText =
+            data.current_cost;
+
+
+        document.getElementById(
+            "optimized_cost"
+        ).innerText =
+            data.optimized_cost;
+
+
+        document.getElementById(
+            "saving"
+        ).innerText =
+            data.saving;
+
+
+        document.getElementById(
+            "saving_percent"
+        ).innerText =
+            data.saving_percent;
+
+
+        document.getElementById(
+            "additional_cost"
+        ).innerText =
+            data.additional_cost;
+
+
+
+        // ------------------------------------------
+        // ADDITIONAL COST VISIBILITY
+        // ------------------------------------------
+
+        const additionalRow =
+            document.getElementById(
+                "additional_cost_row"
+            );
+
+
+        if (
+            data.additional_cost > 0
+        ) {
+
+            additionalRow.style.display =
+                "flex";
+
+        }
+
+        else {
+
+            additionalRow.style.display =
+                "none";
+
+        }
+
+
+
+        // ------------------------------------------
+        // CHART DATA
+        // ------------------------------------------
+
+        const currentTime =
+            new Date()
+                .toLocaleTimeString();
+
+
+        cpuLabels.push(
+            currentTime
+        );
+
+
+        cpuData.push(
+            data.cpu
+        );
+
+
+        memoryLabels.push(
+            currentTime
+        );
+
+
+        memoryData.push(
+            data.memory
+        );
+
+
+
+        if (
+            cpuLabels.length > 12
+        ) {
+
+            cpuLabels.shift();
+
+            cpuData.shift();
+
+        }
+
+
+        if (
+            memoryLabels.length > 12
+        ) {
+
+            memoryLabels.shift();
+
+            memoryData.shift();
+
+        }
+
+
+        cpuChart.update();
+
+        memoryChart.update();
+
+    }
+
+
+    catch (error) {
+
+        console.log(
+            "Metrics Error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+// ==================================================
+// GEMINI AI EXPLANATION
+// ==================================================
+
+async function generateExplanation() {
+
+    const explanation =
+        document.getElementById(
+            "ai_explanation"
+        );
+
+
+    explanation.innerText =
+        "Gemini is analyzing the current resource utilization and CloudSage recommendation...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/explain"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        explanation.innerText =
+            data.ai_explanation;
+
+    }
+
+
+    catch (error) {
+
+        explanation.innerText =
+            "Unable to generate the AI explanation at the moment.";
+
+    }
+
+}
+
+
+
+// ==================================================
+// OPTIMIZATION HISTORY
+// ==================================================
+
+async function loadHistory() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/history"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        const table =
+            document.getElementById(
+                "historyTable"
+            );
+
+
+        table.innerHTML = "";
+
+
+
+        data.forEach(row => {
+
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            let statusClass =
+                "history-optimal";
+
+
+            if (
+                row.status ===
+                "UNDERUTILIZED"
+            ) {
+
+                statusClass =
+                    "history-under";
+
+            }
+
+
+            else if (
+                row.status ===
+                "OVERUTILIZED"
+            ) {
+
+                statusClass =
+                    "history-over";
+
+            }
+
+
+
+            tr.innerHTML = `
+
+                <td>
+                    ${row.timestamp}
+                </td>
+
+                <td>
+                    ${row.cpu}%
+                </td>
+
+                <td>
+                    ${row.memory}%
+                </td>
+
+                <td>
+                    ${row.disk}%
+                </td>
+
+                <td>
+
+                    <span class="history-status ${statusClass}">
+
+                        ${row.status}
+
+                    </span>
+
+                </td>
+
+                <td class="recommendation-cell">
+
+                    ${row.recommendation}
+
+                </td>
+
+                <td class="saving-cell">
+
+                    $${row.saving}
+
+                </td>
+
+            `;
+
+
+            table.appendChild(
+                tr
+            );
+
+        });
+
+    }
+
+
+    catch (error) {
+
+        console.log(
+            "History Error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+// ==================================================
+// START CLOUDSAGE
+// ==================================================
+
+loadSavedTheme();
+
+updateMetrics();
+
+loadHistory();
+
+
+setInterval(
+    updateMetrics,
+    2000
+);
+
+
+setInterval(
+    loadHistory,
+    20000
+);
+
+
+</script>
+
+
+</body>
+
+</html>

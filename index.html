@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CloudSage Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>CloudSage Dashboard</h1>
+
+    <p class="subtitle">
+        Cloud Resource Monitoring and Optimization Advisor
+    </p>
+
+
+    <!-- CLOUD RESOURCE INFORMATION -->
+
+    <div class="cloud-info-box">
+
+        <h2>Cloud Resource Information</h2>
+
+        <p>
+            Cloud Provider:
+            <span id="cloud_provider">Loading...</span>
+        </p>
+
+        <p>
+            Service:
+            <span id="service">Loading...</span>
+        </p>
+
+        <p>
+            Instance Type:
+            <span id="instance_type">Loading...</span>
+        </p>
+
+        <p>
+            Region:
+            <span id="region">Loading...</span>
+        </p>
+
+        <p>
+            Public IP:
+            <span id="public_ip">Loading...</span>
+        </p>
+
+        <p>
+            vCPU:
+            <span id="vcpu">Loading...</span>
+        </p>
+
+    </div>
+
+
+    <!-- LIVE METRIC CARDS -->
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>CPU Usage</h2>
+            <p id="cpu">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h2>Memory Usage</h2>
+            <p id="memory">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h2>Disk Usage</h2>
+            <p id="disk">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h2>Upload Speed</h2>
+            <p id="upload">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h2>Download Speed</h2>
+            <p id="download">Loading...</p>
+        </div>
+
+    </div>
+
+
+    <!-- LIVE CHARTS -->
+
+    <div class="charts-row">
+
+        <div class="chart-box">
+
+            <h2>Live CPU Usage</h2>
+
+            <canvas id="cpuChart"></canvas>
+
+        </div>
+
+
+        <div class="chart-box">
+
+            <h2>Live Memory Usage</h2>
+
+            <canvas id="memoryChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESOURCE STATUS -->
+
+    <div class="status-box">
+
+        <h2>Resource Status</h2>
+
+        <p id="status">
+            Checking...
+        </p>
+
+    </div>
+
+
+    <!-- RECOMMENDATION -->
+
+    <div class="recommendation-box">
+
+        <h2>CloudSage Recommendation</h2>
+
+        <p id="recommendation">
+            Analyzing...
+        </p>
+
+    </div>
+
+
+    <!-- COST ANALYSIS -->
+
+    <div class="cost-box">
+
+        <h2>Cost Analysis</h2>
+
+        <p>
+            Current Monthly Cost:
+            ₹<span id="current_cost">0</span>
+        </p>
+
+        <p>
+            Optimized Monthly Cost:
+            ₹<span id="optimized_cost">0</span>
+        </p>
+
+        <p>
+            Estimated Saving:
+            ₹<span id="saving">0</span>
+        </p>
+
+        <p>
+            Saving Percentage:
+            <span id="saving_percent">0</span>%
+        </p>
+
+    </div>
+
+
+    <!-- AI EXPLANATION -->
+
+    <div class="ai-box">
+
+        <h2>AI Explanation</h2>
+
+        <p id="ai_explanation">
+            Click the button below to generate an AI explanation.
+        </p>
+
+        <button onclick="generateExplanation()">
+            Explain with AI
+        </button>
+
+    </div>
+
+
+    <!-- RECENT AVERAGES -->
+
+    <div class="average-box">
+
+        <h2>Recent Average Utilization</h2>
+
+        <p>
+            Average CPU:
+            <span id="avg_cpu">
+                Loading...
+            </span>
+        </p>
+
+        <p>
+            Average Memory:
+            <span id="avg_memory">
+                Loading...
+            </span>
+        </p>
+
+    </div>
+
+
+    <!-- HISTORY TABLE -->
+
+    <div class="history-box">
+
+        <h2>Optimization History</h2>
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>Time</th>
+
+                <th>CPU %</th>
+
+                <th>Memory %</th>
+
+                <th>Disk %</th>
+
+                <th>Status</th>
+
+                <th>Recommendation</th>
+
+                <th>Saving</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="historyTable">
+
+            <tr>
+
+                <td colspan="7">
+                    Loading history...
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+// --------------------------------
+// CPU CHART DATA
+// --------------------------------
+
+const cpuLabels = [];
+
+const cpuData = [];
+
+
+// --------------------------------
+// MEMORY CHART DATA
+// --------------------------------
+
+const memoryLabels = [];
+
+const memoryData = [];
+
+
+// --------------------------------
+// CREATE CPU CHART
+// --------------------------------
+
+const cpuChart = new Chart(
+
+    document.getElementById('cpuChart'),
+
+    {
+
+        type: 'line',
+
+        data: {
+
+            labels: cpuLabels,
+
+            datasets: [
+
+                {
+
+                    label: 'CPU Usage %',
+
+                    data: cpuData,
+
+                    tension: 0.3
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            scales: {
+
+                y: {
+
+                    min: 0,
+
+                    max: 100
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+
+// --------------------------------
+// CREATE MEMORY CHART
+// --------------------------------
+
+const memoryChart = new Chart(
+
+    document.getElementById('memoryChart'),
+
+    {
+
+        type: 'line',
+
+        data: {
+
+            labels: memoryLabels,
+
+            datasets: [
+
+                {
+
+                    label: 'Memory Usage %',
+
+                    data: memoryData,
+
+                    tension: 0.3
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            scales: {
+
+                y: {
+
+                    min: 0,
+
+                    max: 100
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+
+// --------------------------------
+// LIVE METRICS
+// --------------------------------
+
+async function updateMetrics() {
+
+    try {
+
+        const response =
+            await fetch('/api/metrics');
+
+        const data =
+            await response.json();
+
+
+        // Cloud information
+
+        document.getElementById("cloud_provider").innerText =
+            data.cloud_provider;
+
+        document.getElementById("service").innerText =
+            data.service;
+
+        document.getElementById("instance_type").innerText =
+            data.instance_type;
+
+        document.getElementById("region").innerText =
+            data.region;
+
+        document.getElementById("public_ip").innerText =
+            data.public_ip;
+
+        document.getElementById("vcpu").innerText =
+            data.vcpu;
+
+
+        // Update metric cards
+
+        document.getElementById("cpu").innerText =
+            data.cpu + "%";
+
+
+        document.getElementById("memory").innerText =
+            data.memory + "%";
+
+
+        document.getElementById("disk").innerText =
+            data.disk + "%";
+
+
+        document.getElementById("upload").innerText =
+            data.upload + " KB/s";
+
+
+        document.getElementById("download").innerText =
+            data.download + " KB/s";
+
+
+        // Update status
+
+        document.getElementById("status").innerText =
+            data.status;
+
+
+        // Update recommendation
+
+        document.getElementById("recommendation").innerText =
+            data.recommendation;
+
+
+        // Update averages
+
+        document.getElementById("avg_cpu").innerText =
+            data.avg_cpu + "%";
+
+
+        document.getElementById("avg_memory").innerText =
+            data.avg_memory + "%";
+
+
+        // Update cost information
+
+        document.getElementById("current_cost").innerText =
+            data.current_cost;
+
+
+        document.getElementById("optimized_cost").innerText =
+            data.optimized_cost;
+
+
+        document.getElementById("saving").innerText =
+            data.saving;
+
+
+        document.getElementById("saving_percent").innerText =
+            data.saving_percent;
+
+
+        // -------------------------
+        // UPDATE CHARTS
+        // -------------------------
+
+        const now =
+            new Date().toLocaleTimeString();
+
+
+        cpuLabels.push(now);
+
+        cpuData.push(data.cpu);
+
+
+        memoryLabels.push(now);
+
+        memoryData.push(data.memory);
+
+
+        // Keep latest 10 values only
+
+        if (cpuLabels.length > 10) {
+
+            cpuLabels.shift();
+
+            cpuData.shift();
+
+        }
+
+
+        if (memoryLabels.length > 10) {
+
+            memoryLabels.shift();
+
+            memoryData.shift();
+
+        }
+
+
+        cpuChart.update();
+
+        memoryChart.update();
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "Metric Error:",
+            error
+        );
+
+    }
+
+}
+
+
+// --------------------------------
+// GEMINI AI EXPLANATION
+// --------------------------------
+
+async function generateExplanation() {
+
+    const explanation =
+        document.getElementById(
+            "ai_explanation"
+        );
+
+
+    explanation.innerText =
+        "CloudSage AI is analyzing the resource usage...";
+
+
+    try {
+
+        const response =
+            await fetch('/api/explain');
+
+
+        const data =
+            await response.json();
+
+
+        explanation.innerText =
+            data.ai_explanation;
+
+    }
+
+    catch (error) {
+
+        explanation.innerText =
+            "Unable to generate AI explanation.";
+
+    }
+
+}
+
+
+// --------------------------------
+// LOAD HISTORY
+// --------------------------------
+
+async function loadHistory() {
+
+    try {
+
+        const response =
+            await fetch('/api/history');
+
+
+        const data =
+            await response.json();
+
+
+        const table =
+            document.getElementById(
+                "historyTable"
+            );
+
+
+        table.innerHTML = "";
+
+
+        data.forEach(row => {
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            tr.innerHTML = `
+
+                <td>
+                    ${row.timestamp}
+                </td>
+
+                <td>
+                    ${row.cpu}%
+                </td>
+
+                <td>
+                    ${row.memory}%
+                </td>
+
+                <td>
+                    ${row.disk}%
+                </td>
+
+                <td>
+                    ${row.status}
+                </td>
+
+                <td>
+                    ${row.recommendation}
+                </td>
+
+                <td>
+                    ₹${row.saving}
+                </td>
+
+            `;
+
+
+            table.appendChild(tr);
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "History Error:",
+            error
+        );
+
+    }
+
+}
+
+
+// --------------------------------
+// START DASHBOARD
+// --------------------------------
+
+updateMetrics();
+
+loadHistory();
+
+
+// Live metrics every 2 seconds
+
+setInterval(
+    updateMetrics,
+    2000
+);
+
+
+// History refresh every 20 seconds
+
+setInterval(
+    loadHistory,
+    20000
+);
+
+
+</script>
+
+</body>
+
+</html>
